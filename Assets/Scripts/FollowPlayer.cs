@@ -14,6 +14,7 @@ public class FollowPlayer : MonoBehaviour
     {
         Vector3 desiredPos = player.position + offset;
         Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed);
-        transform.position = desiredPos;
+        Vector3 finalPos = new Vector3(smoothedPos.x, smoothedPos.y, desiredPos.z);
+        transform.position = finalPos;
     }
 }
