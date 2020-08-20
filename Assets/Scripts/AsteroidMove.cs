@@ -13,9 +13,9 @@ public class AsteroidMove : MonoBehaviour
         body.AddForce(Random.Range(-10000.0f, 10000.0f), Random.Range(-10000.0f, 10000.0f), -10000);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnBecameInvisible()
     {
-        
+        Destroy(this.gameObject);
     }
+
 }
