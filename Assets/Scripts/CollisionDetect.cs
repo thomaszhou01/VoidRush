@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class CollisionDetect : MonoBehaviour
 {
+    public PlayerMovement movement;
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
+        
+        if (collision.collider.tag == "Object")
+        {
+            movement.enabled = false;
+            FindObjectOfType<GameManager>().EndGame();
+
+        }
     }
 }

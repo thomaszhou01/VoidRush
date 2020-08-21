@@ -10,7 +10,7 @@ public class AsteroidMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body.AddForce(Random.Range(-10000.0f, 10000.0f), Random.Range(-10000.0f, 10000.0f), -10000);
+        body.AddForce(Random.Range(-10000.0f, 10000.0f), Random.Range(-10000.0f, 10000.0f), Random.Range(0.0f, -100000.0f));
     }
 
     void OnBecameInvisible()
@@ -18,4 +18,8 @@ public class AsteroidMove : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
