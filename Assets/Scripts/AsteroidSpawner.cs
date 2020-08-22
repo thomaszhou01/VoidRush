@@ -32,6 +32,8 @@ public class AsteroidSpawner : MonoBehaviour
     public void spawnAsteroid()
     {
         GameObject asteroid_instance = Instantiate(asteroid, spawnPoint, Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f))) as GameObject;
+        asteroid_instance.GetComponent<Rigidbody>().AddForce((player.position-spawnPoint).normalized * 100000.0f);
+
 
     }
 

@@ -14,7 +14,6 @@ public class CollisionDetect : MonoBehaviour
         {
             movement.enabled = false;
             FindObjectOfType<GameManager>().EndGame();
-
         }
     }
 }
