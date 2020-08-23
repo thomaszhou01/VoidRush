@@ -15,11 +15,9 @@ public class AsteroidMove : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }

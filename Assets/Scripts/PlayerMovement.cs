@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
     public float forwardForce = 200f;
     public float sidewaysForce = 50f;
+    public float upwardsForce = 50f;
     public float acceleration = 4f;
     private Quaternion target, pitch;
 
@@ -24,10 +24,10 @@ public class PlayerMovement : MonoBehaviour
     {
         activeForwardsSpeed = Mathf.Lerp(activeForwardsSpeed, forwardForce, acceleration * Time.deltaTime);
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * sidewaysForce, acceleration * Time.deltaTime);
-        activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Vertical") * sidewaysForce, acceleration * Time.deltaTime);
+        activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Vertical") * upwardsForce, acceleration * Time.deltaTime);
 
-        target = Quaternion.Euler(0, 0, -Input.GetAxisRaw("Horizontal") * 40);
-        pitch = Quaternion.Euler(-Input.GetAxisRaw("Vertical") * 20, 0, 0);
+        target = Quaternion.Euler(0, 0, -Input.GetAxisRaw("Horizontal") * 90);
+        pitch = Quaternion.Euler(-Input.GetAxisRaw("Vertical") * 90, 0, 0);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, target, acceleration * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, pitch, acceleration * Time.deltaTime);
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += transform.forward * activeForwardsSpeed * Time.deltaTime;
         transform.position += (Vector3.right * activeStrafeSpeed * Time.deltaTime);
-        transform.position += (transform.up * activeHoverSpeed * Time.deltaTime);
+        transform.position += (Vector3.up * activeHoverSpeed * Time.deltaTime);
     }
 
     public float zPosition()

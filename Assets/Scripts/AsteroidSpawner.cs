@@ -8,19 +8,60 @@ public class AsteroidSpawner : MonoBehaviour
     public float spawnInterval;
     public Transform player;
     public Vector3 offset;
+    public GameObject asteroid;
+    public float startSafeRange;
 
+    [Space(10)]
+    public AsteroidSpawner SharedInstance;
+    public List<GameObject> pooledObjects;
+    public GameObject objectToPool;
+    public int amountToPool;
 
     private Vector3 spawnPoint;
     private Vector3 desiredPos;
-    public GameObject asteroid;
-    public float startSafeRange;
-    private List<GameObject> objectsToPlace = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+
+        pooledObjects = new List<GameObject>();
+        for (int i = 0; i < amountToPool; i++)
+        {
+            GameObject obj = (GameObject)Instantiate(objectToPool);
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+        }
+
+
         StartCoroutine(asteroidWave());
     }
+
+    void Awake()
+    {
+        SharedInstance = this;
+    }
+
+
+    public GameObject GetPooledObject()
+    {
+        //1
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            //2
+            if (!pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
+        }
+        //3   
+        return null;
+    }
+
+
+
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -29,10 +70,19 @@ public class AsteroidSpawner : MonoBehaviour
 
     }
 
+
+
     public void spawnAsteroid()
     {
-        GameObject asteroid_instance = Instantiate(asteroid, spawnPoint, Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f))) as GameObject;
-        asteroid_instance.GetComponent<Rigidbody>().AddForce((player.position-spawnPoint).normalized * 100000.0f);
+
+        GameObject asteroid_instance = SharedInstance.GetPooledObject();
+        if (asteroid_instance != null)
+        {
+            PickSpawnPoint();
+            asteroid_instance.transform.position = spawnPoint;
+            asteroid_instance.SetActive(true);
+            asteroid_instance.GetComponent<Rigidbody>().AddForce((new Vector3(player.position.x, player.position.y, player.position.z + 0) - spawnPoint).normalized * Random.Range(100000.0f, 200000.0f));
+        }
 
 
     }
@@ -42,7 +92,6 @@ public class AsteroidSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-            PickSpawnPoint();
             spawnAsteroid();
         }
 
