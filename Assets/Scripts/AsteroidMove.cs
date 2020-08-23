@@ -6,18 +6,26 @@ public class AsteroidMove : MonoBehaviour
 {
 
     public Rigidbody body;
+    Renderer m_Renderer;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    body.AddForce(Random.Range(-10000.0f, 10000.0f), Random.Range(-10000.0f, 10000.0f), Random.Range(0.0f, -100000.0f));
-    //}
 
-    void OnBecameInvisible()
+    void Start()
+    {
+        m_Renderer = GetComponent<Renderer>();
+    }
+
+    void Update()
+    {
+        if (!m_Renderer.isVisible)
+        {
+            removeObject();
+        }
+    }
+
+    public void removeObject()
     {
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
     }
-
 }
