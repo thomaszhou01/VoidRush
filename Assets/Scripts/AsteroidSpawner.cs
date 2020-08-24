@@ -9,7 +9,6 @@ public class AsteroidSpawner : MonoBehaviour
     public Transform player;
     public Vector3 offset;
     public GameObject asteroid;
-    public float startSafeRange;
 
     [Space(10)]
     public AsteroidSpawner SharedInstance;
@@ -19,6 +18,7 @@ public class AsteroidSpawner : MonoBehaviour
 
     private Vector3 spawnPoint;
     private Vector3 desiredPos;
+    private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +81,7 @@ public class AsteroidSpawner : MonoBehaviour
             PickSpawnPoint();
             asteroid_instance.transform.position = spawnPoint;
             asteroid_instance.SetActive(true);
-            asteroid_instance.GetComponent<Rigidbody>().AddForce((new Vector3(player.position.x, player.position.y, player.position.z + 0) - spawnPoint).normalized * Random.Range(100000.0f, 200000.0f));
+            asteroid_instance.GetComponent<Rigidbody>().AddForce(targetPos * Random.Range(100000.0f, 200000.0f));
         }
 
 
@@ -100,5 +100,6 @@ public class AsteroidSpawner : MonoBehaviour
     public void PickSpawnPoint()
     {
         spawnPoint = new Vector3(Random.Range(-1f, 1f) * spawnRange + desiredPos.x, Random.Range(-1f, 1f) * spawnRange + desiredPos.y, desiredPos.z);
+        targetPos = (new Vector3(player.position.x, player.position.y, player.position.z - 600) - spawnPoint).normalized;
     }
 }
