@@ -200,17 +200,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1095844989}
+    - target: {fileID: 9079741747025957306, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
+      propertyPath: smoothed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9079741747025957307, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9079741747025957307, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9079741747025957307, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 9079741747025957307, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -250,11 +254,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
---- !u!4 &381287154 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9079741747025957307, guid: 46f055e59ae078b4fb9d21f39d0cc95e, type: 3}
-  m_PrefabInstance: {fileID: 381287153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582845724
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRange: 10000
   spawnInterval: 0.1
+  impactRange: 400
   player: {fileID: 1095844989}
-  offset: {x: 0, y: 0, z: 10000}
+  offset: {x: 0, y: 0, z: 15000}
   asteroid: {fileID: 4108445441123871190, guid: 181e43eb2ec2c0643ac5076928fd3073, type: 3}
   SharedInstance: {fileID: 0}
   pooledObjects: []
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1980, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -505,14 +505,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 210462396264484928, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458843147076658884, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4730756624659093536, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
       propertyPath: m_Name
       value: ship
@@ -560,10 +552,6 @@ PrefabInstance:
     - target: {fileID: 5398926145398882970, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773873974972073938, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e39fd21fcb78e4bb18dbbcadb09c5e, type: 3}
@@ -693,8 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f21e22ed82d060409075a2321aa7493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 381287154}
-  offset: {x: 0, y: 0, z: 27}
+  player: {fileID: 1095844989}
+  offset: {x: 0, y: 0, z: 20}
   smoothed: 0
   smoothSpeed: 0.125
 --- !u!1 &2022253253
@@ -732,8 +720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00001049, y: 132}
-  m_SizeDelta: {x: 160, y: 51.25348}
+  m_AnchoredPosition: {x: 0.00001049, y: 300}
+  m_SizeDelta: {x: 160, y: 53.805153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022253255
 MonoBehaviour:
@@ -757,7 +745,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 184a2427a5ff053479c681feb2af8523, type: 3}
-    m_FontSize: 50
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -789,7 +777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96e09ff4e75ebf4ba0ca574fbc89833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1095844989}
   score: {fileID: 2022253255}
 --- !u!1001 &268914935819428440
 PrefabInstance:

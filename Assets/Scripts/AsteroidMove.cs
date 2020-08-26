@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidMove : MonoBehaviour
 {
-
+    public TrailRenderer trail;
     public Rigidbody body;
     Renderer m_Renderer;
 
@@ -27,5 +27,6 @@ public class AsteroidMove : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
+        trail.Clear();
     }
 }

@@ -60,11 +60,14 @@
     <Compile Include="Assets\Scripts\AsteroidSpawner.cs" />
     <Compile Include="Assets\Scripts\Shoot.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\LineTrail.cs" />
     <Compile Include="Assets\Scripts\AsteroidMove.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\CollisionDetect.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
-    <Compile Include="Assets\Scripts\LineTrail.cs" />
+    <Compile Include="Assets\Scripts\GameScore.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />

@@ -14,26 +14,35 @@ public class PlayerMovement : MonoBehaviour
 
     private float activeForwardsSpeed, activeStrafeSpeed, activeHoverSpeed, activeBoostForce;
     private Boolean isBoosting;
+    private Boolean canBoost;
     private float boostDirection;
 
     // Start is called before the first frame update
     void Start()
     {
         isBoosting = false;
+        canBoost = true;
     }
 
     void stopBoost()
     {
         isBoosting = false;
         boostDirection = 0;
+        Invoke("boostAvailible", boostTime);
+
     }
 
+    void boostAvailible()
+    {
+        canBoost = true;
+    }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Boost") && !isBoosting)
+        if (Input.GetButtonDown("Boost") && !isBoosting && canBoost)
         {
             isBoosting = true;
+            canBoost = false;
             Invoke("stopBoost", boostTime);
             boostDirection = Input.GetAxisRaw("Horizontal");
         }

@@ -6,6 +6,7 @@ public class AsteroidSpawner : MonoBehaviour
 {
     public float spawnRange;
     public float spawnInterval;
+    public float impactRange;
     public Transform player;
     public Vector3 offset;
     public GameObject asteroid;
@@ -59,17 +60,12 @@ public class AsteroidSpawner : MonoBehaviour
 
 
 
-
-
-
-
     // Update is called once per frame
     void Update()
     {
         desiredPos = player.position + offset;
 
     }
-
 
 
     public void spawnAsteroid()
@@ -100,6 +96,9 @@ public class AsteroidSpawner : MonoBehaviour
     public void PickSpawnPoint()
     {
         spawnPoint = new Vector3(Random.Range(-1f, 1f) * spawnRange + desiredPos.x, Random.Range(-1f, 1f) * spawnRange + desiredPos.y, desiredPos.z);
-        targetPos = (new Vector3(player.position.x, player.position.y, player.position.z - 600) - spawnPoint).normalized;
+        targetPos = (new Vector3(
+            player.position.x + Random.Range(-impactRange, impactRange), 
+            player.position.y + Random.Range(-impactRange, impactRange), 
+            player.position.z + +Random.Range(-impactRange, impactRange) - 600) - spawnPoint).normalized;
     }
 }
