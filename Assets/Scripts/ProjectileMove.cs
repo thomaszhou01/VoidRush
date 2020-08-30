@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ProjectileMove : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * forwardForce * Time.deltaTime;
+        StartCoroutine(DestroyObject());
     }
 
     void OnBecameInvisible()
@@ -17,11 +19,17 @@ public class ProjectileMove : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         //setup bullet collisions
         collision.gameObject.SetActive(false);
+        collision.gameObject.GetComponent<TrailRenderer>().Clear();
         Destroy(this.gameObject);
 
     }

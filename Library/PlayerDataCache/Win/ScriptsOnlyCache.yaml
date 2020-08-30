@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - FollowPlayer
     - GameManager
     - GameOver
+    - GameScore
     - LineTrail
     - Menu
     - PlayerMovement
@@ -44,7 +45,26 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.VisualEffectGraph.Editor.dll:
+    - UnityEditor.VFX.Block.AttributeFromCurve
+    - UnityEditor.VFX.Block.ConformToSphere
+    - UnityEditor.VFX.Block.Orient
+    - UnityEditor.VFX.Block.PositionCircle
+    - UnityEditor.VFX.Block.SetAttribute
     - UnityEditor.VFX.UI.VFXViewWindow
+    - UnityEditor.VFX.VFXBasicInitialize
+    - UnityEditor.VFX.VFXBasicSpawner
+    - UnityEditor.VFX.VFXBasicUpdate
+    - UnityEditor.VFX.VFXDataParticle
+    - UnityEditor.VFX.VFXGraph
+    - UnityEditor.VFX.VFXPlanarPrimitiveOutput
+    - UnityEditor.VFX.VFXSlot
+    - UnityEditor.VFX.VFXSlotAnimationCurve
+    - UnityEditor.VFX.VFXSlotFloat
+    - UnityEditor.VFX.VFXSlotFloat3
+    - UnityEditor.VFX.VFXSlotGradient
+    - UnityEditor.VFX.VFXSlotTexture2D
+    - UnityEditor.VFX.VFXSpawnerConstantRate
+    - UnityEditor.VFX.VFXUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -118,19 +138,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14114}
     - Class: 114
-      Script: {instanceID: 15320}
+      Script: {instanceID: 15322}
     - Class: 114
-      Script: {instanceID: 15538}
+      Script: {instanceID: 15540}
     - Class: 114
-      Script: {instanceID: 15614}
+      Script: {instanceID: 15616}
     - Class: 114
-      Script: {instanceID: 15932}
+      Script: {instanceID: 15934}
     - Class: 114
-      Script: {instanceID: 16154}
+      Script: {instanceID: 16156}
     - Class: 114
-      Script: {instanceID: 16510}
+      Script: {instanceID: 16512}
     - Class: 114
-      Script: {instanceID: 16732}
+      Script: {instanceID: 16734}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -193,11 +213,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13418}
     - Class: 114
-      Script: {instanceID: 14438}
+      Script: {instanceID: 14258}
     - Class: 114
-      Script: {instanceID: 16510}
+      Script: {instanceID: 14440}
     - Class: 114
-      Script: {instanceID: 16518}
+      Script: {instanceID: 16512}
+    - Class: 114
+      Script: {instanceID: 16520}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -292,51 +314,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14114}
     - Class: 114
-      Script: {instanceID: 14438}
+      Script: {instanceID: 14440}
     - Class: 114
-      Script: {instanceID: 14468}
+      Script: {instanceID: 14470}
     - Class: 114
-      Script: {instanceID: 14842}
+      Script: {instanceID: 14844}
     - Class: 114
-      Script: {instanceID: 14922}
+      Script: {instanceID: 14924}
     - Class: 114
-      Script: {instanceID: 14944}
+      Script: {instanceID: 14946}
     - Class: 114
-      Script: {instanceID: 15092}
+      Script: {instanceID: 15094}
     - Class: 114
-      Script: {instanceID: 15136}
+      Script: {instanceID: 15138}
     - Class: 114
-      Script: {instanceID: 15144}
+      Script: {instanceID: 15146}
     - Class: 114
-      Script: {instanceID: 15320}
+      Script: {instanceID: 15322}
     - Class: 114
-      Script: {instanceID: 15514}
+      Script: {instanceID: 15516}
     - Class: 114
-      Script: {instanceID: 15538}
+      Script: {instanceID: 15540}
     - Class: 114
-      Script: {instanceID: 15600}
+      Script: {instanceID: 15602}
     - Class: 114
-      Script: {instanceID: 15840}
+      Script: {instanceID: 15842}
     - Class: 114
-      Script: {instanceID: 15932}
+      Script: {instanceID: 15934}
     - Class: 114
-      Script: {instanceID: 15936}
+      Script: {instanceID: 15938}
     - Class: 114
-      Script: {instanceID: 16152}
+      Script: {instanceID: 16154}
     - Class: 114
-      Script: {instanceID: 16222}
-    - Class: 114
-      Script: {instanceID: 16470}
+      Script: {instanceID: 16224}
     - Class: 114
       Script: {instanceID: 16472}
     - Class: 114
-      Script: {instanceID: 16510}
+      Script: {instanceID: 16474}
     - Class: 114
-      Script: {instanceID: 16542}
+      Script: {instanceID: 16512}
     - Class: 114
-      Script: {instanceID: 16704}
+      Script: {instanceID: 16544}
     - Class: 114
-      Script: {instanceID: 16712}
+      Script: {instanceID: 16706}
+    - Class: 114
+      Script: {instanceID: 16714}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -834,6 +856,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 0fb2b962a48d2f6039fa9915b7639cc3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameScore
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

@@ -16,6 +16,9 @@ public class AsteroidSpawner : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
+    public float difficultyIncreaseTime;
+    public bool shouldExpand = false;
+
 
     private Vector3 spawnPoint;
     private Vector3 desiredPos;
@@ -35,6 +38,7 @@ public class AsteroidSpawner : MonoBehaviour
 
 
         StartCoroutine(asteroidWave());
+        StartCoroutine(IncreaseDifficulty());
     }
 
     void Awake()
@@ -55,16 +59,46 @@ public class AsteroidSpawner : MonoBehaviour
             }
         }
         //3   
-        return null;
+        if (shouldExpand)
+        {
+            GameObject obj = (GameObject)Instantiate(objectToPool);
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+            return obj;
+        }
+        else
+        {
+            return null;
+        }
     }
 
+    IEnumerator IncreaseDifficulty()
+    {
+        while (spawnInterval - 0.05f > 0)
+        {
+            yield return new WaitForSeconds(difficultyIncreaseTime);
+            spawnInterval -= 0.05f;
+        }
+        if(spawnInterval - 0.05f < 0)
+        {
+            StartCoroutine(IncreaseAsteroidCount());
+        }
+    }
 
+    IEnumerator IncreaseAsteroidCount()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(difficultyIncreaseTime);
+            shouldExpand = !shouldExpand;
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
         desiredPos = player.position + offset;
-
     }
 
 
@@ -97,8 +131,8 @@ public class AsteroidSpawner : MonoBehaviour
     {
         spawnPoint = new Vector3(Random.Range(-1f, 1f) * spawnRange + desiredPos.x, Random.Range(-1f, 1f) * spawnRange + desiredPos.y, desiredPos.z);
         targetPos = (new Vector3(
-            player.position.x + Random.Range(-impactRange, impactRange), 
-            player.position.y + Random.Range(-impactRange, impactRange), 
+            player.position.x + Random.Range(-impactRange, impactRange),
+            player.position.y + Random.Range(-impactRange, impactRange),
             player.position.z + +Random.Range(-impactRange, impactRange) - 600) - spawnPoint).normalized;
     }
 }

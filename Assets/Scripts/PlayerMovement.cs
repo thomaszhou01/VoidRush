@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float activeForwardsSpeed, activeStrafeSpeed, activeHoverSpeed, activeBoostForce;
     private Boolean isBoosting;
     private Boolean canBoost;
+    private Animator anim;
     private float boostDirection;
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isBoosting = false;
         canBoost = true;
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void stopBoost()
@@ -29,12 +31,13 @@ public class PlayerMovement : MonoBehaviour
         isBoosting = false;
         boostDirection = 0;
         Invoke("boostAvailible", boostTime);
-
+        anim.Play("Default");
     }
 
     void boostAvailible()
     {
         canBoost = true;
+        
     }
 
     private void Update()
@@ -46,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
             Invoke("stopBoost", boostTime);
             boostDirection = Input.GetAxisRaw("Horizontal");
         }
+        anim.SetInteger("intTilt", (int)Input.GetAxisRaw("Horizontal"));
+        anim.SetBool("rollOn", isBoosting);     
     }
 
 
@@ -54,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * sidewaysForce, acceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Vertical") * upwardsForce, acceleration * Time.deltaTime);
+
 
         //activate boost
         if (isBoosting)
@@ -66,11 +72,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        target = Quaternion.Euler(0, 0, -Input.GetAxisRaw("Horizontal") * 90);
-        pitch = Quaternion.Euler(-Input.GetAxisRaw("Vertical") * 90, 0, 0);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, target, acceleration * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, pitch, acceleration * Time.deltaTime);
+        //target = Quaternion.Euler(0, 0, -Input.GetAxisRaw("Horizontal") * 90);
+        //pitch = Quaternion.Euler(-Input.GetAxisRaw("Vertical") * 90, 0, 0);
+        //
+        //transform.rotation = Quaternion.Lerp(transform.rotation, target, acceleration * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, pitch, acceleration * Time.deltaTime);
 
 
         transform.position += (Vector3.right * activeStrafeSpeed * Time.deltaTime);
