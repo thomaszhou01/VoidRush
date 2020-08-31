@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 5577268077680786346}
   - component: {fileID: 613956057}
   - component: {fileID: 7879755767378206684}
+  - component: {fileID: 892860441}
   m_Layer: 8
   m_Name: ship
   m_TagString: Untagged
@@ -255,11 +256,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd812abd676e624081019bd4df32727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostForce: 500
+  boostForce: 750
   sidewaysForce: 150
   upwardsForce: 75
   acceleration: 4
-  boostTime: 1
+  boostTime: 0.5
 --- !u!114 &613956057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +290,25 @@ MonoBehaviour:
   gunpoint1: {fileID: 1765533740}
   gunpoint2: {fileID: 1067248085}
   ship: {fileID: 5398926145398882970}
+--- !u!95 &892860441
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730756624659093536}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50c4f4c04ed14994cb2adfbcd07bd780, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5109910230619035413
 GameObject:
   m_ObjectHideFlags: 0

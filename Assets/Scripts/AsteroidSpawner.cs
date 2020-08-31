@@ -112,6 +112,7 @@ public class AsteroidSpawner : MonoBehaviour
             asteroid_instance.transform.position = spawnPoint;
             asteroid_instance.SetActive(true);
             asteroid_instance.GetComponent<Rigidbody>().AddForce(targetPos * Random.Range(100000.0f, 200000.0f));
+            asteroid_instance.GetComponent<Rigidbody>().AddTorque(targetPos * 1000000.0f);
         }
 
 
