@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
             boostDirection = Input.GetAxisRaw("Horizontal");
         }
         anim.SetInteger("intTilt", (int)Input.GetAxisRaw("Horizontal"));
+        anim.SetInteger("intTiltVert", (int)Input.GetAxisRaw("Vertical"));
+
         anim.SetBool("rollOn", isBoosting);     
     }
 
