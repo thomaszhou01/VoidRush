@@ -261,6 +261,7 @@ MonoBehaviour:
   upwardsForce: 75
   acceleration: 4
   boostTime: 0.5
+  chargeBar: {fileID: 0}
 --- !u!114 &613956057
 MonoBehaviour:
   m_ObjectHideFlags: 0

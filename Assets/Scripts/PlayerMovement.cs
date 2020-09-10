@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float upwardsForce = 50f;
     public float acceleration = 4f;
     public float boostTime = 1.0f;
+    public ChargeBar chargeBar;
+
+
     private Quaternion target, pitch;
 
     private float activeForwardsSpeed, activeStrafeSpeed, activeHoverSpeed, activeBoostForce;
@@ -17,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private Boolean canBoost;
     private Animator anim;
     private float boostDirection;
+    private float timeElapsed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         isBoosting = false;
         canBoost = true;
         anim = gameObject.GetComponent<Animator>();
+        chargeBar.SetMaxHealth(boostTime);
     }
 
     void stopBoost()
@@ -32,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         boostDirection = 0;
         Invoke("boostAvailible", boostTime);
         anim.Play("Default");
+        chargeBar.SetHealth(0);
     }
 
     void boostAvailible()
@@ -61,6 +68,18 @@ public class PlayerMovement : MonoBehaviour
     {
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * sidewaysForce, acceleration * Time.deltaTime);
         activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Vertical") * upwardsForce, acceleration * Time.deltaTime);
+
+        if(!isBoosting && !canBoost)
+        {
+            //Fix the interpolation 
+            chargeBar.SetHealth(Mathf.Lerp(0, boostTime, timeElapsed/boostTime));
+            timeElapsed += Time.deltaTime;
+        }
+        else
+        {
+            chargeBar.SetHealth(boostTime);
+            timeElapsed = 0;
+        }
 
 
         //activate boost
